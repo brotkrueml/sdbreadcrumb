@@ -1,0 +1,45 @@
+{
+    "name": "brotkrueml/sdbreadcrumb",
+    "type": "typo3-cms-extension",
+    "description": "View helper for rendering the structured data for a breadcrumb",
+    "homepage": "https://brot.krue.ml/",
+    "license": [
+        "GPL-2.0-or-later"
+    ],
+    "keywords": [
+        "TYPO3 CMS",
+        "Fluid",
+        "ViewHelper",
+        "Structured data",
+        "Breadcrumb"
+    ],
+    "version": "1.0.0",
+    "require": {
+        "ext-json": "*",
+        "typo3/cms-core": "^8.7 || ^9.5",
+        "typo3fluid/fluid": "^2.3"
+    },
+    "require-dev": {
+        "nimut/testing-framework": "^4.1"
+    },
+    "replace": {
+        "sdbreadcrumb": "self.version",
+        "typo3-ter/sdbreadcrumb": "self.version"
+    },
+    "autoload": {
+        "psr-4": {
+            "Brotkrueml\\Sdbreadcrumb\\": "Classes/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Brotkrueml\\Sdbreadcrumb\\Tests\\": "Tests/"
+        }
+    },
+    "extra": {
+        "typo3/cms": {
+            "cms-package-dir": "{$vendor-dir}/typo3/cms",
+            "web-dir": "Build/web"
+        }
+    }
+}
