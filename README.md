@@ -60,15 +60,40 @@ As the result of the menu processor for the rootline is an array of an array, yo
             'title' => 'Start page',
         ],
         [
-            'link' => '/category-1',
+            'link' => '/category-1/',
             'title' => 'Category 1',
         ],
         [
-            'link' => '/subcategory-1-1',
+            'link' => '/subcategory-1-1/',
             'title' => 'Subcategory 1-1',
         ],
     ];
 
-The result will be in the compact JSON-LD format.
+The result will be in the compact JSON-LD format:
+
+    <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "item": {
+                    "@id": "https://example.org/category-1/",
+                    "name": "Category 1"
+                }
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "item": {
+                    "@id": "https://example.org/subcategory-1-1/",
+                    "name": "Subcategory 1-1"
+                }
+            }
+        ]
+    }
+    </script>
 
 You can test the generated structured data in the [Structured Data Testing Tool](https://search.google.com/structured-data/testing-tool).
