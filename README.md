@@ -4,7 +4,7 @@ This is a TYPO3 Fluid view helper extension that renders structured data for the
 
 ## Requirements
 
-The extension requires TYPO3 9 LTS.
+The extension requires TYPO3 8 LTS or TYPO3 9 LTS.
 
 ## Why should you use this extension?
 
