@@ -97,3 +97,14 @@ The result will be in the compact JSON-LD format:
     </script>
 
 You can test the generated structured data in the [Structured Data Testing Tool](https://search.google.com/structured-data/testing-tool).
+
+## Using the XML Schema (XSD) for Validation in your Template
+
+It is possible to assist your code editor on suggesting the tag name and the possible attributes.
+Just add the `sdb` namespace to the root of your Fluid template:
+
+    <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:sdb="http://typo3.org/ns/Brotkrueml/Sdbreadcrumb/ViewHelpers" sdb:schemaLocation="https://brot.krue.ml/schemas/sdbreadcrumb-1.0.0.xsd" data-namespace-typo3-fluid="true">
+
+The relevant part is the namespace declaration (`xmlns:sdb="http://typo3.org/ns/Brotkrueml/Sdbreadcrumb/ViewHelpers"`). The content of the `sdb:schemaLocation` attribute points to the recent XSD definition.
+
+You can also import the XSD file into your favorite IDE, it is shipped with the extension. You can find the file in the folder `Resources/Private/Schemas/`.
