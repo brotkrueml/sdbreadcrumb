@@ -7,7 +7,41 @@ use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
 use TYPO3Fluid\Fluid\Core\ViewHelper;
 
 /**
- * ViewHelper to render breadcrumb markup as json-ld
+ * ViewHelper to render breadcrumb markup in JSON-LD format
+ *
+ * The result of the MenuProcessor (special = breadcrumb) can be
+ * given to the view helper:
+ *
+ * <code title="Configuring the MenuProcessor in TypoScript">
+ * page.10 = FLUIDTEMPLATE
+ * page.10 {
+ *   // ... Your other configuration
+ *
+ *   dataProcessing {
+ *     10 = TYPO3\CMS\Frontend\DataProcessing\MenuProcessor
+ *     10 {
+ *       special = rootline
+ *       as = breadcrumb
+ *     }
+ *   }
+ * }
+ * </code>
+ *
+ * As default the first entry (which is mostly the start page)
+ * is stripped from the structured data because it is not necessary.
+ * But you can include it setting the attribute stripFirstItem="0".
+ *
+ * = Examples =
+ * <code title="Render structured data without the start page">
+ * <sdb:breadcrumbMarkup breadcrumb="{breadcrumb}">
+ * </code>
+ * <output>
+ * <script type="application/ld+json">... The output according to the breadcrumb in JSON format ...</script>
+ * </output>
+ *
+ * <code title="Render structured data with all items given">
+ * <sdb:breadcrumbMarkup breadcrumb="{breadcrumb}" stripFirstItem="0">
+ * </code>
  */
 class BreadcrumbMarkupViewHelper extends ViewHelper\AbstractViewHelper
 {
