@@ -3,7 +3,7 @@
 $EM_CONF[$_EXTKEY] = [
     'title' => 'Structured Data Breadcrumb View Helper',
     'description' => 'View helper for rendering the structured data for a breadcrumb',
-    'category' => 'frontend',
+    'category' => 'fe',
     'state' => 'stable',
     'createDirs' => '',
     'clearCacheOnLoad' => true,
