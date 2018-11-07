@@ -34,8 +34,22 @@ class BreadcrumbMarkupViewHelperTest extends UnitTestCase
             ->disableOriginalConstructor()
             ->getMock();
 
-        /** @noinspection PhpInternalEntityUsedInspection */
-        GeneralUtility::setIndpEnv('TYPO3_SITE_URL', 'https://example.org/');
+        $this->fakeTypo3SiteUrl();
+    }
+
+    protected function fakeTypo3SiteUrl()
+    {
+        if (method_exists(GeneralUtility::class, 'setIndpEnv')) {
+            /** @noinspection PhpInternalEntityUsedInspection */
+            GeneralUtility::setIndpEnv('TYPO3_SITE_URL', 'https://example.org/');
+            return;
+        }
+
+        /** @noinspection PhpUnhandledExceptionInspection */
+        $class = new \ReflectionClass(GeneralUtility::class);
+        $property = $class->getProperty('indpEnvCache');
+        $property->setAccessible(true);
+        $property->setValue(GeneralUtility::class, ['TYPO3_SITE_URL' => 'https://example.org/']);
     }
 
     /**
