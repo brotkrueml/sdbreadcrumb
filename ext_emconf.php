@@ -17,4 +17,7 @@ $EM_CONF[$_EXTKEY] = [
         'conflicts' => [
         ],
     ],
+    'autoload' => [
+        'psr-4' => ['Brotkrueml\\Sdbreadcrumb\\' => 'Classes']
+    ],
 ];
