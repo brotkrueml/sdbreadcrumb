@@ -13,7 +13,7 @@
         "Structured data",
         "Breadcrumb"
     ],
-    "version": "1.0.0",
+    "version": "1.0.1",
     "require": {
         "ext-json": "*",
         "typo3/cms-core": "^8.7 || ^9.5",
