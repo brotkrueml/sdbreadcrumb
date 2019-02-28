@@ -3,25 +3,25 @@
 namespace Brotkrueml\Sdbreadcrumb\Tests\Unit\ViewHelpers;
 
 use Brotkrueml\Sdbreadcrumb\ViewHelpers\BreadcrumbMarkupViewHelper;
-use Nimut\TestingFramework\TestCase\UnitTestCase;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\TestingFramework\Fluid\Unit\ViewHelpers\ViewHelperBaseTestcase;
 use TYPO3Fluid\Fluid\Core\Rendering\RenderingContext;
 
 
 /**
  * Testcase for BreadcrumbMarkupViewHelper
  */
-class BreadcrumbMarkupViewHelperTest extends UnitTestCase
+class BreadcrumbMarkupViewHelperTest extends ViewHelperBaseTestcase
 {
     /**
      * @var BreadcrumbMarkupViewHelper
      */
-    private $viewHelper;
+    protected $viewHelper;
 
     /**
      * @var RenderingContext
      */
-    private $renderingContextMock;
+    protected $renderingContextMock;
 
     protected function setUp()
     {
@@ -47,6 +47,7 @@ class BreadcrumbMarkupViewHelperTest extends UnitTestCase
 
         /** @noinspection PhpUnhandledExceptionInspection */
         $class = new \ReflectionClass(GeneralUtility::class);
+        /** @noinspection PhpUnhandledExceptionInspection */
         $property = $class->getProperty('indpEnvCache');
         $property->setAccessible(true);
         $property->setValue(GeneralUtility::class, ['TYPO3_SITE_URL' => 'https://example.org/']);
