@@ -66,7 +66,7 @@ class BreadcrumbMarkupViewHelper extends ViewHelper\AbstractViewHelper
         );
     }
 
-    static public function renderStatic(
+    public static function renderStatic(
         array $arguments,
         \Closure $renderChildrenClosure,
         RenderingContextInterface $renderingContext
@@ -81,6 +81,17 @@ class BreadcrumbMarkupViewHelper extends ViewHelper\AbstractViewHelper
             return '';
         }
 
+        return '<script type="application/ld+json">'
+            . json_encode(static::generateMarkup($breadcrumb), JSON_UNESCAPED_SLASHES)
+            . '</script>';
+    }
+
+    /**
+     * @param array $breadcrumb
+     * @return array
+     */
+    protected static function generateMarkup(array $breadcrumb): array
+    {
         $siteUrl = GeneralUtility::getIndpEnv('TYPO3_SITE_URL');
         if ($breadcrumb[0]['link'][0] === '/') {
             $siteUrl = rtrim($siteUrl, '/');
@@ -97,14 +108,12 @@ class BreadcrumbMarkupViewHelper extends ViewHelper\AbstractViewHelper
                 '@type' => 'ListItem',
                 'position' => $index + 1,
                 'item' => [
-                    '@id' =>  $siteUrl . $item['link'],
+                    '@id' => $siteUrl . $item['link'],
                     'name' => $item['title'],
                 ],
             ];
         }
 
-        return '<script type="application/ld+json">'
-            . json_encode($markup, JSON_UNESCAPED_SLASHES)
-            . '</script>';
+        return $markup;
     }
 }
