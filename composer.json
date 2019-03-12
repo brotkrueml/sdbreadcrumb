@@ -20,7 +20,7 @@
         "typo3fluid/fluid": "^2.3"
     },
     "require-dev": {
-        "typo3/testing-framework": "^2.0 || ^3.0 || ^4.0"
+        "phpunit/phpunit": "^7.5"
     },
     "replace": {
         "sdbreadcrumb": "self.version",

@@ -3,62 +3,68 @@
 namespace Brotkrueml\Sdbreadcrumb\Tests\Unit\ViewHelpers;
 
 use Brotkrueml\Sdbreadcrumb\ViewHelpers\BreadcrumbMarkupViewHelper;
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\TestingFramework\Fluid\Unit\ViewHelpers\ViewHelperBaseTestcase;
 use TYPO3Fluid\Fluid\Core\Rendering\RenderingContext;
 
 
 /**
  * Testcase for BreadcrumbMarkupViewHelper
  */
-class BreadcrumbMarkupViewHelperTest extends ViewHelperBaseTestcase
+class BreadcrumbMarkupViewHelperTest extends Testcase
 {
     /**
-     * @var BreadcrumbMarkupViewHelper
+     * @test
      */
-    protected $viewHelper;
-
-    /**
-     * @var RenderingContext
-     */
-    protected $renderingContextMock;
-
-    protected function setUp()
+    public function argumentsAreRegisteredCorrectly()
     {
-        $this->viewHelper = $this->getAccessibleMock(
-            BreadcrumbMarkupViewHelper::class,
-            null
-        );
-
-        $this->renderingContextMock = $this->getMockBuilder(RenderingContext::class)
-            ->disableOriginalConstructor()
+        /** @var MockObject|BreadcrumbMarkupViewHelper $viewHelper */
+        $viewHelper = $this->getMockBuilder(BreadcrumbMarkupViewHelper::class)
+            ->setMethods(['registerArgument'])
             ->getMock();
 
-        $this->fakeTypo3SiteUrl();
+        $viewHelper
+            ->expects($this->exactly(2))
+            ->method('registerArgument')
+            ->withConsecutive(
+                [
+                    'breadcrumb',
+                    'array',
+                    $this->anything(),
+                    true
+                ],
+                [
+                    'stripFirstItem',
+                    'bool',
+                    $this->anything(),
+                    false,
+                    true
+                ]
+            );
+
+        $viewHelper->initializeArguments();
     }
 
-    protected function fakeTypo3SiteUrl()
-    {
-        if (method_exists(GeneralUtility::class, 'setIndpEnv')) {
-            /** @noinspection PhpInternalEntityUsedInspection */
-            GeneralUtility::setIndpEnv('TYPO3_SITE_URL', 'https://example.org/');
-            return;
-        }
-
-        /** @noinspection PhpUnhandledExceptionInspection */
-        $class = new \ReflectionClass(GeneralUtility::class);
-        /** @noinspection PhpUnhandledExceptionInspection */
-        $property = $class->getProperty('indpEnvCache');
-        $property->setAccessible(true);
-        $property->setValue(GeneralUtility::class, ['TYPO3_SITE_URL' => 'https://example.org/']);
-    }
 
     /**
      * @test
      * @dataProvider provider
+     * @param $breadcrumb
+     * @param $stripFirstItem
+     * @param $expected
      */
-    public function renderReturnsCorrectStructuredData($breadcrumb, $stripFirstItem, $expected)
+    public function renderReturnsCorrectStructuredData(array $breadcrumb, bool $stripFirstItem, string $expected)
     {
+        $viewHelper = new BreadcrumbMarkupViewHelper();
+
+        /** @var RenderingContext $renderingContextMock */
+        $renderingContextMock = $this->getMockBuilder(RenderingContext::class)
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $this->fakeTypo3SiteUrl();
+
         $arguments = [
             'breadcrumb' => $breadcrumb,
         ];
@@ -67,17 +73,17 @@ class BreadcrumbMarkupViewHelperTest extends ViewHelperBaseTestcase
             $arguments['stripFirstItem'] = $stripFirstItem;
         }
 
-        $actual = ($this->viewHelper)::renderStatic(
+        $actual = $viewHelper::renderStatic(
             $arguments,
             function () {
             },
-            $this->renderingContextMock
+            $renderingContextMock
         );
 
         $this->assertEquals($expected, $actual);
     }
 
-    public function provider()
+    public function provider(): array
     {
         $defaultBreadcrumb = [
             [
@@ -141,5 +147,21 @@ class BreadcrumbMarkupViewHelperTest extends ViewHelperBaseTestcase
                 '<script type="application/ld+json">{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://example.org/index.php?id=1","name":"fake start page"}},{"@type":"ListItem","position":2,"item":{"@id":"https://example.org/index.php=id=2","name":"fake subpage"}}]}</script>'
             ]
         ];
+    }
+
+    protected function fakeTypo3SiteUrl()
+    {
+        if (method_exists(GeneralUtility::class, 'setIndpEnv')) {
+            /** @noinspection PhpInternalEntityUsedInspection */
+            GeneralUtility::setIndpEnv('TYPO3_SITE_URL', 'https://example.org/');
+            return;
+        }
+
+        /** @noinspection PhpUnhandledExceptionInspection */
+        $class = new \ReflectionClass(GeneralUtility::class);
+        /** @noinspection PhpUnhandledExceptionInspection */
+        $property = $class->getProperty('indpEnvCache');
+        $property->setAccessible(true);
+        $property->setValue(GeneralUtility::class, ['TYPO3_SITE_URL' => 'https://example.org/']);
     }
 }
