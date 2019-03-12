@@ -37,4 +37,4 @@ script:
   - >
     echo;
     echo "Running unit tests";
-    .Build/bin/phpunit -c .Build/vendor/typo3/testing-framework/Resources/Core/Build/UnitTests.xml Tests/Unit/
+    .Build/bin/phpunit -c Tests/UnitTests.xml
