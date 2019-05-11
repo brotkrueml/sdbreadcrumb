@@ -87,6 +87,7 @@ The result will be in the compact JSON-LD format:
                 "@type": "ListItem",
                 "position": 1,
                 "item": {
+                    "@type": "WebPage",
                     "@id": "https://example.org/category-1/",
                     "name": "Category 1"
                 }
@@ -95,6 +96,7 @@ The result will be in the compact JSON-LD format:
                 "@type": "ListItem",
                 "position": 2,
                 "item": {
+                    "@type": "WebPage",
                     "@id": "https://example.org/subcategory-1-1/",
                     "name": "Subcategory 1-1"
                 }
