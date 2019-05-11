@@ -108,6 +108,7 @@ class BreadcrumbMarkupViewHelper extends ViewHelper\AbstractViewHelper
                 '@type' => 'ListItem',
                 'position' => $index + 1,
                 'item' => [
+                    '@type' => 'WebPage',
                     '@id' => $siteUrl . $item['link'],
                     'name' => $item['title'],
                 ],

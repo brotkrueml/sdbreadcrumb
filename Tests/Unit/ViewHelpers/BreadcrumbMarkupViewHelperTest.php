@@ -115,12 +115,12 @@ class BreadcrumbMarkupViewHelperTest extends Testcase
             'render correct output with stripFirstTime is set to true' => [
                 $defaultBreadcrumb,
                 true,
-                '<script type="application/ld+json">{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://example.org/level-1/","name":"fake subpage for level 1"}},{"@type":"ListItem","position":2,"item":{"@id":"https://example.org/level-1/level-2/","name":"fake subpage for level 2"}}]}</script>',
+                '<script type="application/ld+json">{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@type":"WebPage","@id":"https://example.org/level-1/","name":"fake subpage for level 1"}},{"@type":"ListItem","position":2,"item":{"@type":"WebPage","@id":"https://example.org/level-1/level-2/","name":"fake subpage for level 2"}}]}</script>',
             ],
             'render correct output with stripFirstTime is set to false' => [
                 $defaultBreadcrumb,
                 false,
-                '<script type="application/ld+json">{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://example.org/","name":"fake start page"}},{"@type":"ListItem","position":2,"item":{"@id":"https://example.org/level-1/","name":"fake subpage for level 1"}},{"@type":"ListItem","position":3,"item":{"@id":"https://example.org/level-1/level-2/","name":"fake subpage for level 2"}}]}</script>',
+                '<script type="application/ld+json">{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@type":"WebPage","@id":"https://example.org/","name":"fake start page"}},{"@type":"ListItem","position":2,"item":{"@type":"WebPage","@id":"https://example.org/level-1/","name":"fake subpage for level 1"}},{"@type":"ListItem","position":3,"item":{"@type":"WebPage","@id":"https://example.org/level-1/level-2/","name":"fake subpage for level 2"}}]}</script>',
             ],
             'output empty string with breadcrumb has only one entry and stripFirstTime is set to true' => [
                 array_slice($defaultBreadcrumb, 0, 1),
@@ -130,7 +130,7 @@ class BreadcrumbMarkupViewHelperTest extends Testcase
             'render correct output with breadcrumb has only one entry and stripFirstTime is set to false' => [
                 array_slice($defaultBreadcrumb, 0, 1),
                 false,
-                '<script type="application/ld+json">{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://example.org/","name":"fake start page"}}]}</script>',
+                '<script type="application/ld+json">{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@type":"WebPage","@id":"https://example.org/","name":"fake start page"}}]}</script>',
             ],
             'render correct output with links in format index.php?id=42' => [
                 [
@@ -144,7 +144,7 @@ class BreadcrumbMarkupViewHelperTest extends Testcase
                     ],
                 ],
                 false,
-                '<script type="application/ld+json">{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://example.org/index.php?id=1","name":"fake start page"}},{"@type":"ListItem","position":2,"item":{"@id":"https://example.org/index.php=id=2","name":"fake subpage"}}]}</script>'
+                '<script type="application/ld+json">{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@type":"WebPage","@id":"https://example.org/index.php?id=1","name":"fake start page"}},{"@type":"ListItem","position":2,"item":{"@type":"WebPage","@id":"https://example.org/index.php=id=2","name":"fake subpage"}}]}</script>'
             ]
         ];
     }
