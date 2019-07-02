@@ -5,7 +5,7 @@
 [![Build Status](https://travis-ci.org/brotkrueml/sdbreadcrumb.svg?branch=master)](https://travis-ci.org/brotkrueml/sdbreadcrumb)
 [![Maintainability](https://api.codeclimate.com/v1/badges/cc4bebf34f92b95dbeb9/maintainability)](https://codeclimate.com/github/brotkrueml/sdbreadcrumb/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/cc4bebf34f92b95dbeb9/test_coverage)](https://codeclimate.com/github/brotkrueml/sdbreadcrumb/test_coverage)
-[![Latest Stable Version](https://poser.pugx.org/brotkrueml/sdbreadcrumb/v/stable)](https://packagist.org/packages/brotkrueml/sdbreadcrumb)
+[![Latest Stable Version](https://img.shields.io/packagist/v/brotkrueml/sdbreadcrumb.svg)](https://packagist.org/packages/brotkrueml/sdbreadcrumb)
 
 This is a TYPO3 Fluid view helper extension that renders structured data for the breadcrumb.
 
