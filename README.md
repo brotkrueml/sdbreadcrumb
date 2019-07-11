@@ -21,6 +21,9 @@ With this view helper you can render a [breadcrumb list](https://schema.org/Brea
 
 You can find more information about the benefits of structured breadcrumb markup and examples in the [Google feature guide](https://developers.google.com/search/docs/data-types/breadcrumb).
 
+> If you want more than just include the breadcrumb as structured markup in your page, use the [schema extension](https://github.com/brotkrueml/schema).
+> With it you can use an API or view helpers to output any content in a structured way. You can also migrate easily to the schema extension. have a look below.
+
 ## Installation
 
 ### Installation via Composer
@@ -117,3 +120,19 @@ Just add the `sdb` namespace to the root of your Fluid template:
 The relevant part is the namespace declaration (`xmlns:sdb="http://typo3.org/ns/Brotkrueml/Sdbreadcrumb/ViewHelpers"`). The content of the `sdb:schemaLocation` attribute points to the recent XSD definition.
 
 You can also import the XSD file into your favorite IDE, it is shipped with the extension. You can find the file in the folder `Resources/Private/Schemas/`.
+
+## Migration to the schema extension
+
+With the [schema extension](https://github.com/brotkrueml/schema) you can't just have the breadcrumb as structured markup. You'll also get an API and
+many more view helpers to add, for example, organisations, persons, videos, job postings and many more types to your
+site in a structured way.
+
+The migration is easy. Just replace
+
+    <sdb:breadcrumbMarkup breadcrumb="{breadcrumb}"/>
+    
+with
+
+    <schema:breadcrumb breadcrumb="{breadcrumb}"/>
+
+in your Fluid template. That's it.
