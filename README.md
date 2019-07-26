@@ -13,6 +13,8 @@ This is a TYPO3 Fluid view helper extension that renders structured data for the
 
 The extension requires TYPO3 8 LTS or TYPO3 9 LTS.
 
+The master branch can be used with TYPO3 10.0.
+
 ## Why should you use this extension?
 
 Structured data enriches your content for search engines.
