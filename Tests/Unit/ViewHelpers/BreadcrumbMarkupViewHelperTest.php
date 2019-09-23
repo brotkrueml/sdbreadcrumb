@@ -8,7 +8,6 @@ use PHPUnit\Framework\TestCase;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3Fluid\Fluid\Core\Rendering\RenderingContext;
 
-
 /**
  * Testcase for BreadcrumbMarkupViewHelper
  */
@@ -45,7 +44,6 @@ class BreadcrumbMarkupViewHelperTest extends Testcase
 
         $viewHelper->initializeArguments();
     }
-
 
     /**
      * @test
@@ -99,7 +97,6 @@ class BreadcrumbMarkupViewHelperTest extends Testcase
                 'title' => 'fake subpage for level 2',
             ],
         ];
-
 
         return [
             'output empty string if breadcrumb list is empty and stripFirstTime is set to true' => [
