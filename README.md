@@ -1,7 +1,5 @@
 # About Structured Data Breadcrumb View Helper
 
-[![TYPO3](https://img.shields.io/badge/TYPO3-8%20LTS-orange.svg)](https://typo3.org/)
-[![TYPO3](https://img.shields.io/badge/TYPO3-9%20LTS-orange.svg)](https://typo3.org/)
 [![Build Status](https://travis-ci.org/brotkrueml/sdbreadcrumb.svg?branch=master)](https://travis-ci.org/brotkrueml/sdbreadcrumb)
 [![Maintainability](https://api.codeclimate.com/v1/badges/cc4bebf34f92b95dbeb9/maintainability)](https://codeclimate.com/github/brotkrueml/sdbreadcrumb/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/cc4bebf34f92b95dbeb9/test_coverage)](https://codeclimate.com/github/brotkrueml/sdbreadcrumb/test_coverage)
@@ -11,7 +9,7 @@ This is a TYPO3 Fluid view helper extension that renders structured data for the
 
 ## Requirements
 
-The extension works with TYPO3 8 LTS, TYPO3 9 LTS and TYPO3 10.0.
+The extension works with TYPO3 8 LTS, TYPO3 9 LTS and TYPO3 v10.
 
 ## Why should you use this extension?
 
