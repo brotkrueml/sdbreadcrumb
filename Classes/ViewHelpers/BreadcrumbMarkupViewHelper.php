@@ -3,6 +3,13 @@ declare(strict_types=1);
 
 namespace Brotkrueml\Sdbreadcrumb\ViewHelpers;
 
+/*
+ * This file is part of the "sdbreadcrumb" extension for TYPO3 CMS.
+ *
+ * For the full copyright and license information, please read the
+ * LICENSE.txt file that was distributed with this source code.
+ */
+
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
 use TYPO3Fluid\Fluid\Core\ViewHelper;
