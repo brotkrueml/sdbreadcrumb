@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace Brotkrueml\Sdbreadcrumb\ViewHelpers;
 
@@ -71,7 +72,7 @@ class BreadcrumbMarkupViewHelper extends ViewHelper\AbstractViewHelper
         array $arguments,
         \Closure $renderChildrenClosure,
         RenderingContextInterface $renderingContext
-    ) {
+    ): string {
         $breadcrumb = $arguments['breadcrumb'];
 
         if ($arguments['stripFirstItem']) {
