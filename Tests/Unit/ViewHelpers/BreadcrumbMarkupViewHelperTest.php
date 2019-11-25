@@ -25,19 +25,19 @@ class BreadcrumbMarkupViewHelperTest extends Testcase
             ->getMock();
 
         $viewHelper
-            ->expects($this->exactly(2))
+            ->expects(self::exactly(2))
             ->method('registerArgument')
             ->withConsecutive(
                 [
                     'breadcrumb',
                     'array',
-                    $this->anything(),
+                    self::anything(),
                     true
                 ],
                 [
                     'stripFirstItem',
                     'bool',
-                    $this->anything(),
+                    self::anything(),
                     false,
                     true
                 ]
@@ -79,7 +79,7 @@ class BreadcrumbMarkupViewHelperTest extends Testcase
             $renderingContextMock
         );
 
-        $this->assertEquals($expected, $actual);
+        self::assertSame($expected, $actual);
     }
 
     public function provider(): array
