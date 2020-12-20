@@ -7,7 +7,7 @@ This is a TYPO3 Fluid view helper extension that renders structured data for the
 
 ## Requirements
 
-The extension works with TYPO3 8 LTS, TYPO3 9 LTS and TYPO3 v10.
+The extension supports TYPO3 8 LTS, TYPO3 9 LTS and TYPO3 10 LTS.
 
 ## Why should you use this extension?
 
