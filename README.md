@@ -1,8 +1,6 @@
 # About Structured Data Breadcrumb View Helper
 
-[![Build Status](https://travis-ci.org/brotkrueml/sdbreadcrumb.svg?branch=master)](https://travis-ci.org/brotkrueml/sdbreadcrumb)
-[![Maintainability](https://api.codeclimate.com/v1/badges/cc4bebf34f92b95dbeb9/maintainability)](https://codeclimate.com/github/brotkrueml/sdbreadcrumb/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/cc4bebf34f92b95dbeb9/test_coverage)](https://codeclimate.com/github/brotkrueml/sdbreadcrumb/test_coverage)
+[![CI Status](https://github.com/brotkrueml/sdbreadcrumb/workflows/CI/badge.svg?branch=master)](https://github.com/brotkrueml/sdbreadcrumb/actions?query=workflow%3ACI)
 [![Latest Stable Version](https://img.shields.io/packagist/v/brotkrueml/sdbreadcrumb.svg)](https://packagist.org/packages/brotkrueml/sdbreadcrumb)
 
 This is a TYPO3 Fluid view helper extension that renders structured data for the breadcrumb.
@@ -128,7 +126,7 @@ site in a structured way.
 The migration is easy. Just replace
 
     <sdb:breadcrumbMarkup breadcrumb="{breadcrumb}"/>
-    
+
 with
 
     <schema:breadcrumb breadcrumb="{breadcrumb}"/>
