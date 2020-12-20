@@ -42,6 +42,7 @@
     },
     "extra": {
         "typo3/cms": {
+            "extension-key": "sdbreadcrumb",
             "app-dir": ".Build",
             "web-dir": ".Build/web"
         }
