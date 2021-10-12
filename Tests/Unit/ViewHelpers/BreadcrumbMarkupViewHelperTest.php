@@ -9,9 +9,6 @@ use PHPUnit\Framework\TestCase;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3Fluid\Fluid\Core\Rendering\RenderingContext;
 
-/**
- * Testcase for BreadcrumbMarkupViewHelper
- */
 class BreadcrumbMarkupViewHelperTest extends Testcase
 {
     /**
@@ -49,11 +46,8 @@ class BreadcrumbMarkupViewHelperTest extends Testcase
     /**
      * @test
      * @dataProvider provider
-     * @param $breadcrumb
-     * @param $stripFirstItem
-     * @param $expected
      */
-    public function renderReturnsCorrectStructuredData(array $breadcrumb, bool $stripFirstItem, string $expected)
+    public function renderReturnsCorrectStructuredData($breadcrumb, bool $stripFirstItem, string $expected)
     {
         $viewHelper = new BreadcrumbMarkupViewHelper();
 
@@ -100,12 +94,22 @@ class BreadcrumbMarkupViewHelperTest extends Testcase
         ];
 
         return [
-            'output empty string if breadcrumb list is empty and stripFirstTime is set to true' => [
+            'output empty string if breadcrumb list is null and stripFirstTime is set to true' => [
+                null,
+                true,
+                '',
+            ],
+            'output empty string if breadcrumb list is null and stripFirstTime is set to false' => [
+                null,
+                false,
+                '',
+            ],
+            'output empty string if breadcrumb list is an empty array and stripFirstTime is set to true' => [
                 [],
                 true,
                 '',
             ],
-            'output empty string if breadcrumb list is empty and stripFirstTime is set to false' => [
+            'output empty string if breadcrumb list is an empty array and stripFirstTime is set to false' => [
                 [],
                 false,
                 '',
@@ -150,14 +154,11 @@ class BreadcrumbMarkupViewHelperTest extends Testcase
     protected function fakeTypo3SiteUrl()
     {
         if (method_exists(GeneralUtility::class, 'setIndpEnv')) {
-            /** @noinspection PhpInternalEntityUsedInspection */
             GeneralUtility::setIndpEnv('TYPO3_SITE_URL', 'https://example.org/');
             return;
         }
 
-        /** @noinspection PhpUnhandledExceptionInspection */
         $class = new \ReflectionClass(GeneralUtility::class);
-        /** @noinspection PhpUnhandledExceptionInspection */
         $property = $class->getProperty('indpEnvCache');
         $property->setAccessible(true);
         $property->setValue(GeneralUtility::class, ['TYPO3_SITE_URL' => 'https://example.org/']);

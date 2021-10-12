@@ -80,13 +80,13 @@ class BreadcrumbMarkupViewHelper extends ViewHelper\AbstractViewHelper
         \Closure $renderChildrenClosure,
         RenderingContextInterface $renderingContext
     ): string {
-        $breadcrumb = $arguments['breadcrumb'];
+        $breadcrumb = $arguments['breadcrumb'] ?? [];
 
         if ($arguments['stripFirstItem']) {
             $breadcrumb = array_slice($breadcrumb, 1);
         }
 
-        if (!count($breadcrumb)) {
+        if ($breadcrumb === []) {
             return '';
         }
 

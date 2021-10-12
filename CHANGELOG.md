@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+- PHP warning when breadcrumb variable is null on TYPO3 v11.5.0
+
 ## [1.2.0] - 2020-12-22
 
 ### Added
