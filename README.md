@@ -1,8 +1,5 @@
 # About Structured Data Breadcrumb View Helper
 
-[![CI Status](https://github.com/brotkrueml/sdbreadcrumb/workflows/CI/badge.svg?branch=master)](https://github.com/brotkrueml/sdbreadcrumb/actions?query=workflow%3ACI)
-[![Latest Stable Version](https://img.shields.io/packagist/v/brotkrueml/sdbreadcrumb.svg)](https://packagist.org/packages/brotkrueml/sdbreadcrumb)
-
 This is a TYPO3 Fluid view helper extension that renders structured data for the breadcrumb.
 
 > This TYPO3 extension is obsolete. Use [EXT:schema](https://github.com/brotkrueml/schema) instead.
